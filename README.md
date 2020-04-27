@@ -1,11 +1,8 @@
 # QCA6174-samsung-galaxy-book-12-w720
-Set of drivers for Qualcomm Atheros QCA6174 802.11ac Wireless Network Adapter includen into Samsung Galaxy Book 12.0 w720 (https://www.samsung.com/us/support/owners/product/galaxy-book-12-wi-fi)
+Set of drivers for Qualcomm Atheros QCA6174 802.11ac Wireless Network Adapter includen into Samsung Galaxy Book 12.0 w720 (https://www.samsung.com/us/support/owners/product/galaxy-book-12-wi-fi) that enable WiFi support on Linux.
 
 
-
-The `QCA6174.sh` script renames original `board.bin` file and overwrites with the right version. Moreover it deletes the `board-2.bin` file.
-
-Script content:
+### Script content and behavior
 ```
 sudo mv /lib/firmware/ath10k/QCA6174/hw3.0/board.bin /lib/firmware/ath10k/QCA6174/hw3.0/board.bin.bak
 
@@ -14,9 +11,20 @@ sudo mv /lib/firmware/ath10k/QCA6174/hw3.0/board-2.bin /lib/firmware/ath10k/QCA6
 sudo cp ./QCA6174/hw3.0/eeprom_ar6320_3p0_TX8_clpc.bin /lib/firmware/ath10k/QCA6174/hw3.0/board.bin
 ```
 
-On Manjaro Linux you need to re-launch this script after every update of `linux-firmware` package.
+The `QCA6174.sh` script renames original `board.bin` file and overwrites with the right version. Moreover it deletes, eventually, the `board-2.bin` file.
 
-`hwinfo --wlan` comman output:
+
+### How to use
+- Clone the repository
+- Enter in the directory
+- `chmod +x QCA6174.sh`
+- `./QCA6174.sh`
+
+**PS**: On Manjaro Linux you need to re-launch this script after every update of `linux-firmware` package.
+
+
+### Hardware info
+`hwinfo --wlan` command output:
 ```
 10: PCI 100.0: 0282 WLAN controller                             
   [Created at pci.386]
